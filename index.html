@@ -9,32 +9,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap" rel="stylesheet" />
   <style>
     html, body { margin: 0; padding: 0; background: #dcecc9; }
-    #curtain { position: fixed; inset: 0; z-index: 9999; pointer-events: none; }
+    #curtain {
+      position: fixed; inset: 0; z-index: 9999;
+      background: #dcecc9;
+      transition: opacity 1.2s ease;
+    }
+    #curtain.curtain-open { opacity: 0; }
     #curtain.curtain-hidden { display: none; }
-    .curtain-panel {
-      position: absolute; top: 0; height: 100%; width: 50%;
-      background: #dcecc9; overflow: hidden;
-      transition: transform 1.2s cubic-bezier(0.76, 0, 0.24, 1);
-    }
-    .curtain-left { left: 0; }
-    .curtain-right { right: 0; }
-    #curtain.curtain-open .curtain-left { transform: translateX(-100%); }
-    #curtain.curtain-open .curtain-right { transform: translateX(100%); }
-    .curtain-word {
-      position: absolute; top: 50%;
-      white-space: nowrap;
-      font-family: 'Young Serif', serif;
-      font-size: clamp(40px, 7vw, 96px);
-      letter-spacing: -0.01em;
-      color: #a3873f;
-      animation: curtain-float 2.4s ease-in-out infinite;
-    }
-    .curtain-left .curtain-word { right: 0; transform: translate(50%, -50%); }
-    .curtain-right .curtain-word { left: 0; transform: translate(-50%, -50%); }
-    #curtain.curtain-open .curtain-word { animation: none; }
-    @keyframes curtain-float {
-      0%, 100% { margin-top: 10px; }
-      50% { margin-top: -10px; }
+    #curtainVideo {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
     }
   </style>
 </head>
@@ -42,8 +27,7 @@
 
 <!-- ============ CURTAIN PRELOADER ============ -->
 <div id="curtain">
-  <div class="curtain-panel curtain-left"><span class="curtain-word">panda tapes</span></div>
-  <div class="curtain-panel curtain-right"><span class="curtain-word">panda tapes</span></div>
+  <video id="curtainVideo" src="/uploads/curtain%20video.mp4" muted playsinline autoplay preload="auto"></video>
 </div>
 
 <div id="root" style="--mat:#14724A; --accent:#F2E14C; --pin:860vh; font-family:'Source Serif 4', Georgia, serif; background:#FBFAF4; color:#23281F; overflow-x:clip">
@@ -335,14 +319,32 @@
   (function () {
     var curtain = document.getElementById('curtain');
     if (!curtain) return;
+    var video = document.getElementById('curtainVideo');
     var docEl = document.documentElement;
     docEl.style.overflow = 'hidden';
     window.scrollTo(0, 0);
-    setTimeout(function () {
+
+    var LIFT_START = 0.36;
+    var finished = false;
+    function finish() {
+      if (finished) return;
+      finished = true;
       curtain.classList.add('curtain-open');
       docEl.style.overflow = '';
       setTimeout(function () { curtain.classList.add('curtain-hidden'); }, 1300);
-    }, 2000);
+    }
+
+    if (video) {
+      video.play().catch(function () {});
+      video.addEventListener('timeupdate', function () {
+        if (video.duration && video.currentTime >= video.duration * LIFT_START) finish();
+      });
+      video.addEventListener('ended', finish);
+      video.addEventListener('error', finish);
+      setTimeout(finish, 8000);
+    } else {
+      setTimeout(finish, 4000);
+    }
   })();
 </script>
 <script type="module" src="/src/main.js"></script>
