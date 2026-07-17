@@ -45,7 +45,7 @@ function renderVals() {
   const p = state.p
   const words = state.words
   const pop = 'transform .55s cubic-bezier(.34,1.55,.6,1), opacity .4s ease'
-  const pA = 0.55
+  const pA = 0.62
   const q = clamp01((p - pA) / (1 - pA))
 
   // stats words: pop on load (timers), ride the page-turn out
@@ -77,7 +77,7 @@ function renderVals() {
   // problem words: scroll-driven pop, fly up as the overlay exits
   const pword = (i) => {
     const enter = p > 0.34 + i * 0.03
-    const exit = p > 0.48
+    const exit = p > 0.55
     const on = enter && !exit
     return {
       opacity: on ? 1 : 0,
@@ -86,7 +86,7 @@ function renderVals() {
     }
   }
   // big KT-tape strip wipes across the screen to reveal the composted section
-  const tapeWipe = clamp01((p - 0.48) / 0.10)
+  const tapeWipe = clamp01((p - 0.55) / 0.10)
 
   // "we composted that": scroll-driven pop after the problem phase
   const word = (i) => {
