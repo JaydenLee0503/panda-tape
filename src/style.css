@@ -10,6 +10,7 @@ body {
   margin: 0;
   padding: 0;
   background: #fbfaf4;
+  overscroll-behavior: none;
 }
 
 a {
