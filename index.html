@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Panda Tapes — Compostable Kinesio Tape</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+
+<div id="root" style="--mat:#14724A; --accent:#F2E14C; --pin:860vh; font-family:'Source Serif 4', Georgia, serif; background:#FBFAF4; color:#23281F; overflow-x:clip">
+
+  <!-- ============ HERO: pinned scroll story ============ -->
+  <div data-screen-label="Hero — mat story" style="height:var(--pin,380vh); position:relative">
+    <div style="position:sticky; top:0; height:100vh; overflow:hidden; background-color:#FBFAF4">
+      <div id="frame">
+
+        <!-- zooming mat surface -->
+        <div id="zoom">
+          <div style="position:absolute; inset:0; background-color:var(--mat); background-image: radial-gradient(120% 90% at 50% 30%, rgba(255,255,255,.10), rgba(0,0,0,.30)), repeating-linear-gradient(0deg, rgba(255,255,255,.13) 0px, rgba(255,255,255,.13) 1px, transparent 1px, transparent 46px), repeating-linear-gradient(90deg, rgba(255,255,255,.13) 0px, rgba(255,255,255,.13) 1px, transparent 1px, transparent 46px), repeating-linear-gradient(0deg, rgba(255,255,255,.05) 0px, rgba(255,255,255,.05) 1px, transparent 1px, transparent 11.5px), repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0px, rgba(255,255,255,.05) 1px, transparent 1px, transparent 11.5px)"></div>
+          <div style="position:absolute; left:6%; top:4%; width:58%; height:62%; background:radial-gradient(closest-side, rgba(0,0,0,.30), transparent 70%); filter:blur(34px); transform:rotate(-9deg)"></div>
+        </div>
+
+        <!-- center product slot -->
+        <div style="position:absolute; left:50%; top:calc(50% + 150px); transform:translateX(-50%); width:270px; height:48px; background:radial-gradient(closest-side, rgba(0,0,0,.35), transparent 72%); filter:blur(7px); z-index:2"></div>
+        <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-53%); width:320px; height:320px; z-index:3">
+          <div id="slot" style="width:100%; height:100%">
+            <div class="img-slot" style="border-radius:50%">
+              <div class="ring"></div>
+              <div class="cap">balled-up used tape / product shot</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- stats phase overlay (desk photo) -->
+        <div id="stats">
+          <div style="position:absolute; inset:0; background-image:url('/uploads/mat-desk.png'); background-size:cover; background-position:center"></div>
+          <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(20,25,18,.32), rgba(20,25,18,.12) 45%, rgba(20,25,18,.36))"></div>
+          <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:38vw; display:flex; flex-direction:column; align-items:center; text-align:center; font-family:'Young Serif', serif; font-size:4.4vw; line-height:1.02; letter-spacing:-.02em; color:#FBFAF4; text-shadow:0 6px 26px rgba(0,0,0,.55)">
+            <div id="sw1"><span style="color:var(--accent)">5,000 tonnes</span></div>
+            <div id="sw2">of kinesio tape</div>
+            <div id="sw3">landfilled yearly.</div>
+          </div>
+          <div style="position:absolute; right:5vw; bottom:9vh; text-align:right; display:flex; flex-direction:column; align-items:flex-end; gap:14px">
+            <div style="background:rgba(35,40,31,.85); border-radius:999px; padding:11px 18px; font-family:ui-monospace, Menlo, monospace; font-size:11px; font-weight:600; letter-spacing:.16em; color:#FBFAF4">EVERY ROLL EVER MADE STILL EXISTS</div>
+            <div style="font-family:'Caveat', cursive; font-size:28px; font-weight:600; color:rgba(251,250,244,.9); transform:rotate(-3deg)">and it's mostly plastic ↓</div>
+          </div>
+          <div id="turnShade"></div>
+        </div>
+
+        <!-- recycling phase overlay (trash can) -->
+        <div id="recycle">
+          <div style="position:absolute; inset:0; background-image:url('/uploads/trash-street.jpg'); background-size:cover; background-position:center right"></div>
+          <div style="position:absolute; inset:0; background:linear-gradient(90deg, rgba(18,22,15,.86), rgba(18,22,15,.5) 40%, rgba(18,22,15,.06) 68%, rgba(18,22,15,0))"></div>
+          <div style="position:absolute; left:6vw; top:50%; transform:translateY(-50%); max-width:62vw; display:flex; flex-direction:column; align-items:flex-start; font-family:'Young Serif', serif; letter-spacing:-.02em; text-shadow:0 8px 34px rgba(0,0,0,.5)">
+            <div id="rw1"><div style="font-size:5.2vw; line-height:1; color:#FBFAF4">the reality of</div></div>
+            <div id="rw2"><div style="font-size:13vw; line-height:.84; color:var(--accent)">&ldquo;recycling&rdquo;</div></div>
+            <div id="rw3"><div style="margin-top:30px; background:rgba(35,40,31,.85); border-radius:999px; padding:11px 18px; font-family:ui-monospace, Menlo, monospace; font-size:12px; font-weight:600; letter-spacing:.16em; color:#FBFAF4; display:inline-block">&lsquo;RECYCLABLE&rsquo; &ne; RECYCLED &middot; UNDER 9% ACTUALLY IS</div></div>
+          </div>
+          <div style="position:absolute; right:5vw; bottom:9vh; text-align:right">
+            <div style="font-family:'Caveat', cursive; font-size:28px; font-weight:600; color:rgba(251,250,244,.9); transform:rotate(-3deg)">so where does it really go? ↓</div>
+          </div>
+        </div>
+
+        <!-- problem phase overlay -->
+        <div id="problem">
+          <div style="position:absolute; inset:0; background-image:url('/uploads/peel.jpg'); background-size:cover; background-position:center right"></div>
+          <div style="position:absolute; inset:0; background:linear-gradient(90deg, rgba(8,12,8,.92), rgba(8,12,8,.6) 32%, rgba(8,12,8,.08) 58%, rgba(8,12,8,0))"></div>
+          <div style="position:absolute; left:6vw; top:50%; transform:translateY(-50%); display:flex; flex-direction:column; align-items:flex-start; gap:6px; font-family:'Young Serif', serif; font-size:5vw; line-height:.92; letter-spacing:-.02em; text-shadow:0 8px 34px rgba(0,0,0,.55)">
+            <div style="color:#FBFAF4"><div id="pw1">every strip</div></div>
+            <div style="color:var(--accent)"><div id="pw2">you peel</div></div>
+            <div style="color:#FBFAF4"><div id="pw3">outlives you.</div></div>
+          </div>
+          <div style="position:absolute; right:5vw; bottom:9vh; text-align:right; display:flex; flex-direction:column; align-items:flex-end; gap:14px">
+            <div style="background:rgba(35,40,31,.85); border-radius:999px; padding:11px 18px; font-family:ui-monospace, Menlo, monospace; font-size:11px; font-weight:600; letter-spacing:.16em; color:#FBFAF4">PLASTIC FILM + ACRYLIC GLUE · ~100 YRS IN LANDFILL</div>
+            <div style="font-family:'Caveat', cursive; font-size:28px; font-weight:600; color:rgba(251,250,244,.9); transform:rotate(-3deg)">keep scrolling — we fixed it ↓</div>
+          </div>
+        </div>
+
+        <!-- descending roll cylinder for the paper-unroll entrance -->
+        <div id="rollBar"></div>
+
+        <!-- big KT-tape strip wipe into the composted section -->
+        <div id="tape"></div>
+
+        <!-- giant scroll words -->
+        <div id="roll" style="position:absolute; right:2vw; top:50%; transform:translateY(-50%); width:46vw; height:60vh; z-index:4; background-image:url('/uploads/kt-roll.png'); background-size:contain; background-repeat:no-repeat; background-position:center right; filter:drop-shadow(0 30px 60px rgba(0,0,0,.28)); opacity:0"></div>
+        <div style="position:absolute; left:5vw; top:9vh; z-index:5; font-family:'Young Serif', serif; font-size:15vw; line-height:.8; letter-spacing:-.02em; color:var(--accent); text-shadow:0 8px 34px rgba(0,0,0,.25)">
+          <div id="w1">we</div>
+        </div>
+        <div style="position:absolute; left:3vw; top:34vh; z-index:5; font-family:'Young Serif', serif; font-size:14vw; line-height:.8; letter-spacing:-.02em; color:var(--accent); text-shadow:0 8px 34px rgba(0,0,0,.25)">
+          <div id="w2">composted</div>
+        </div>
+        <div style="position:absolute; left:56vw; top:63vh; z-index:5; font-family:'Young Serif', serif; font-size:15vw; line-height:.8; letter-spacing:-.02em; color:var(--accent); text-shadow:0 8px 34px rgba(0,0,0,.25)">
+          <div id="w3">that.</div>
+        </div>
+
+        <!-- sticker badges -->
+        <div style="position:absolute; right:6vw; top:16vh; z-index:6">
+          <div id="st2">
+            <div style="background:#FFFDF4; border-radius:12px; padding:13px 18px; box-shadow:0 12px 26px rgba(0,0,0,.28); font-family:ui-monospace, Menlo, monospace; font-size:12px; font-weight:600; letter-spacing:.16em; color:#23281F; animation:pt-bob 4.4s ease-in-out -1s infinite">100% BAMBOO LYOCELL</div>
+          </div>
+        </div>
+        <div style="position:absolute; right:9vw; bottom:25vh; z-index:6">
+          <div id="st4">
+            <div style="background:#FFFDF4; border-radius:12px; padding:13px 18px; box-shadow:0 12px 26px rgba(0,0,0,.28); font-family:ui-monospace, Menlo, monospace; font-size:12px; font-weight:600; letter-spacing:.16em; color:#23281F; animation:pt-bob 4.8s ease-in-out -.7s infinite">SEAWEED ADHESIVE</div>
+          </div>
+        </div>
+        <div style="position:absolute; left:36vw; top:7vh; z-index:6">
+          <div id="st5">
+            <div style="background:var(--accent); border-radius:999px; padding:11px 18px; box-shadow:0 12px 26px rgba(0,0,0,.28); font-family:ui-monospace, Menlo, monospace; font-size:11px; font-weight:600; letter-spacing:.16em; color:#23281F; animation:pt-bob 4.2s ease-in-out -1.5s infinite">ZERO MICROPLASTICS</div>
+          </div>
+        </div>
+
+        <!-- headline phase -->
+        <div style="position:absolute; inset:0; z-index:4; display:flex; align-items:center; justify-content:center">
+          <div id="head">
+            <div style="display:flex; flex-direction:column; align-items:center; gap:34px; text-align:center">
+              <div style="font-size:clamp(42px, 5.6vw, 86px); font-weight:600; line-height:1.06; color:#FFFDF4; text-shadow:0 4px 24px rgba(0,0,0,.25)">Stick.<br>Sweat.<br>Compost.</div>
+              <div style="display:flex; align-items:center; gap:22px">
+                <div style="width:76px; height:76px; border-radius:22px; background:linear-gradient(145deg, #2E7D52, #1B4D35); box-shadow:0 14px 30px rgba(0,0,0,.35); display:flex; align-items:center; justify-content:center">
+                  <div style="width:44px; height:18px; border-radius:9px; background:#FFFDF4; transform:rotate(-24deg); box-shadow:0 2px 0 rgba(0,0,0,.18)"></div>
+                </div>
+                <div style="font-family:'Caveat', cursive; font-size:34px; font-weight:600; color:#FFFDF4; transform:rotate(-4deg)">…and one little app</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ WHITE STORY SECTIONS ============ -->
+  <div style="position:relative; z-index:2; background:#FBFAF4; border-radius:0 0 64px 64px; box-shadow:0 50px 90px rgba(0,0,0,.35)">
+
+    <!-- marquee ticker -->
+    <div style="position:relative; z-index:3; overflow:hidden; background:var(--accent); transform:rotate(-1.2deg) scale(1.06); margin-top:-24px; box-shadow:0 16px 40px rgba(35,40,31,.2)">
+      <div style="display:flex; width:max-content; animation:pt-marquee 30s linear infinite"><div style="display:flex; align-items:center; gap:36px; padding:15px 0 15px 36px; font-family:ui-monospace, Menlo, monospace; font-size:13px; font-weight:600; letter-spacing:.18em; color:#23281F; white-space:nowrap"><span>PANDA TAPES</span><span>✺</span><span>COMPOSTABLE KINESIO TAPE</span><span>✺</span><span>BAMBOO LYOCELL</span><span>✺</span><span>SEAWEED ADHESIVE</span><span>✺</span><span>ZERO MICROPLASTICS</span><span>✺</span><span>GONE IN 12 WEEKS</span><span>✺</span></div><div style="display:flex; align-items:center; gap:36px; padding:15px 0 15px 36px; font-family:ui-monospace, Menlo, monospace; font-size:13px; font-weight:600; letter-spacing:.18em; color:#23281F; white-space:nowrap"><span>PANDA TAPES</span><span>✺</span><span>COMPOSTABLE KINESIO TAPE</span><span>✺</span><span>BAMBOO LYOCELL</span><span>✺</span><span>SEAWEED ADHESIVE</span><span>✺</span><span>ZERO MICROPLASTICS</span><span>✺</span><span>GONE IN 12 WEEKS</span><span>✺</span></div></div>
+    </div>
+
+    <!-- support list -->
+    <section data-screen-label="Support list" style="max-width:1040px; margin:0 auto; padding:150px 40px 110px">
+      <div class="pt-rise" style="position:relative; text-align:center; margin-bottom:64px">
+        <div style="font-size:clamp(30px, 3.6vw, 44px); font-weight:400; line-height:1.25">Made to move with your</div>
+        <div style="font-family:'Pinyon Script', cursive; font-size:clamp(66px, 8vw, 104px); line-height:.95; color:#17A45B">Joints</div>
+        <div style="position:absolute; left:-8px; top:34%; font-family:'Caveat', cursive; font-size:23px; color:#C9C4B2; transform:rotate(-8deg)">no acrylics, ever</div>
+      </div>
+      <div class="pt-rise support-row" style="display:grid; grid-template-columns:260px 1fr; gap:14px 40px; align-items:baseline; padding:26px 8px; border-top:1px solid #ECE7D8; border-radius:14px">
+        <div style="font-size:24px">Knees</div>
+        <div style="font-family:-apple-system, 'Helvetica Neue', sans-serif; font-size:15px; line-height:1.7; color:#B7B1A0">Runner's knee · Jumper's knee · Meniscus support · Post-op recovery</div>
+      </div>
+      <div class="pt-rise support-row" style="display:grid; grid-template-columns:260px 1fr; gap:14px 40px; align-items:baseline; padding:26px 8px; border-top:1px solid #ECE7D8; border-radius:14px">
+        <div style="font-size:24px">Shoulders</div>
+        <div style="font-family:-apple-system, 'Helvetica Neue', sans-serif; font-size:15px; line-height:1.7; color:#B7B1A0">Rotator cuff · Swimmer's shoulder · Posture assist</div>
+      </div>
+      <div class="pt-rise support-row" style="display:grid; grid-template-columns:260px 1fr; gap:14px 40px; align-items:baseline; padding:26px 8px; border-top:1px solid #ECE7D8; border-radius:14px">
+        <div style="font-size:24px">Ankles &amp; Feet</div>
+        <div style="font-family:-apple-system, 'Helvetica Neue', sans-serif; font-size:15px; line-height:1.7; color:#B7B1A0">Sprains · Plantar fasciitis · Achilles support</div>
+      </div>
+      <div class="pt-rise support-row" style="display:grid; grid-template-columns:260px 1fr; gap:14px 40px; align-items:baseline; padding:26px 8px; border-top:1px solid #ECE7D8; border-radius:14px">
+        <div style="font-size:24px">Elbows &amp; Wrists</div>
+        <div style="font-family:-apple-system, 'Helvetica Neue', sans-serif; font-size:15px; line-height:1.7; color:#B7B1A0">Tennis elbow · Climber's wrist · Keyboard strain</div>
+      </div>
+      <div class="pt-rise support-row" style="display:grid; grid-template-columns:260px 1fr; gap:14px 40px; align-items:baseline; padding:26px 8px; border-top:1px solid #ECE7D8; border-radius:14px">
+        <div style="font-size:24px">Back &amp; Core</div>
+        <div style="font-family:-apple-system, 'Helvetica Neue', sans-serif; font-size:15px; line-height:1.7; color:#B7B1A0">Lower-back support · Lifting days · Posture cueing</div>
+      </div>
+      <div class="pt-rise support-row" style="display:grid; grid-template-columns:260px 1fr; gap:14px 40px; align-items:baseline; padding:26px 8px; border-top:1px solid #ECE7D8; border-bottom:1px solid #ECE7D8; border-radius:14px">
+        <div style="font-size:24px">Calves &amp; Shins</div>
+        <div style="font-family:-apple-system, 'Helvetica Neue', sans-serif; font-size:15px; line-height:1.7; color:#B7B1A0">Shin splints · Calf strains · Race-day support</div>
+      </div>
+    </section>
+
+    <!-- materials -->
+    <section data-screen-label="Materials" style="max-width:1140px; margin:0 auto; padding:60px 40px 140px">
+      <div class="pt-rise" style="position:relative; text-align:center">
+        <div style="font-size:clamp(30px, 3.6vw, 44px); font-weight:400; line-height:1.25">Made from bamboo &amp;</div>
+        <div style="font-family:'Pinyon Script', cursive; font-size:clamp(66px, 8vw, 104px); line-height:.95; color:#17A45B">Seaweed</div>
+        <div style="position:absolute; right:10px; top:20%; font-family:'Caveat', cursive; font-size:23px; color:#C9C4B2; text-decoration:line-through; transform:rotate(6deg)">not plastic.</div>
+      </div>
+      <div class="pt-rise" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:26px; margin-top:66px">
+        <div class="material-card" style="background:#FFFFFF; border:1px solid #ECE7D8; border-radius:26px; padding:16px 16px 26px">
+          <div style="height:190px">
+            <div class="img-slot" style="border-radius:16px">
+              <div class="ring"></div>
+              <div class="cap">bamboo lyocell weave, macro</div>
+            </div>
+          </div>
+          <div style="font-size:22px; margin:20px 6px 8px">Bamboo lyocell weave</div>
+          <div style="font-family:-apple-system, 'Helvetica Neue', sans-serif; font-size:15px; line-height:1.65; color:#8D897B; margin:0 6px">Four-way stretch, breathable, softer than cotton — spun from FSC-certified bamboo.</div>
+        </div>
+        <div class="material-card" style="background:#FFFFFF; border:1px solid #ECE7D8; border-radius:26px; padding:16px 16px 26px">
+          <div style="height:190px">
+            <div class="img-slot" style="border-radius:16px">
+              <div class="ring"></div>
+              <div class="cap">seaweed adhesive, lab shot</div>
+            </div>
+          </div>
+          <div style="font-size:22px; margin:20px 6px 8px">Seaweed-based adhesive</div>
+          <div style="font-family:-apple-system, 'Helvetica Neue', sans-serif; font-size:15px; line-height:1.65; color:#8D897B; margin:0 6px">Holds through five sweaty days. Zero acrylics, zero latex, zero irritation.</div>
+        </div>
+        <div class="material-card" style="background:#FFFFFF; border:1px solid #ECE7D8; border-radius:26px; padding:16px 16px 26px">
+          <div style="height:190px">
+            <div class="img-slot" style="border-radius:16px">
+              <div class="ring"></div>
+              <div class="cap">compost time-lapse frame</div>
+            </div>
+          </div>
+          <div style="font-size:22px; margin:20px 6px 8px">Gone in 12 weeks</div>
+          <div style="font-family:-apple-system, 'Helvetica Neue', sans-serif; font-size:15px; line-height:1.65; color:#8D897B; margin:0 6px">Certified home-compostable. Bury it in a garden bed or drop it at a Panda point.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- drop-off app -->
+    <section data-screen-label="Drop-off app" style="max-width:1080px; margin:0 auto; padding:40px 40px 150px; display:grid; grid-template-columns:1.1fr .9fr; gap:70px; align-items:center">
+      <div>
+        <div class="pt-rise" style="font-size:clamp(30px, 3.6vw, 44px); font-weight:400; line-height:1.25">Find your nearest</div>
+        <div style="font-family:'Pinyon Script', cursive; font-size:clamp(66px, 8vw, 104px); line-height:.95; color:#17A45B">Drop-off</div>
+        <p style="font-family:-apple-system, 'Helvetica Neue', sans-serif; font-size:17px; line-height:1.7; color:#6A675C; max-width:420px; margin:26px 0 0">The Panda app maps compost bins and partner gyms near you, so a used strip never sees a landfill. Peel it, ball it, drop it — the app logs every strip you bring home to the soil.</p>
+        <div style="font-family:'Caveat', cursive; font-size:26px; font-weight:600; color:#17A45B; transform:rotate(-4deg); margin-top:30px; width:max-content">312 bins &amp; counting</div>
+      </div>
+      <div class="pt-rise" style="max-width:380px; width:100%; margin-left:auto; background:#FFFFFF; border:1px solid #ECE7D8; border-radius:30px; padding:14px; box-shadow:0 34px 70px rgba(35,40,31,.14)">
+        <div style="position:relative; height:220px; border-radius:20px; background:#E7F0E2; overflow:hidden">
+          <div style="position:absolute; width:130px; height:130px; border-radius:50%; background:#D3E6C8; right:-34px; top:-34px"></div>
+          <div style="position:absolute; left:-20%; top:52%; width:140%; height:14px; background:#FBFAF4; transform:rotate(-14deg)"></div>
+          <div style="position:absolute; left:34%; top:-20%; width:14px; height:140%; background:#FBFAF4; transform:rotate(10deg)"></div>
+          <div style="position:absolute; left:26%; top:36%; width:16px; height:16px; border-radius:50%; animation:pt-pulse 2.4s ease-out infinite; background:#17A45B; border:3px solid #FFFFFF; box-shadow:0 4px 10px rgba(0,0,0,.25)"></div>
+          <div style="position:absolute; left:62%; top:24%; width:16px; height:16px; border-radius:50%; animation:pt-pulse 2.4s ease-out .6s infinite; background:#17A45B; border:3px solid #FFFFFF; box-shadow:0 4px 10px rgba(0,0,0,.25)"></div>
+          <div style="position:absolute; left:72%; top:66%; width:16px; height:16px; border-radius:50%; animation:pt-pulse 2.4s ease-out 1.2s infinite; background:#17A45B; border:3px solid #FFFFFF; box-shadow:0 4px 10px rgba(0,0,0,.25)"></div>
+          <div style="position:absolute; left:44%; top:56%; width:14px; height:14px; border-radius:50%; background:#23281F; border:3px solid #FFFFFF; box-shadow:0 4px 10px rgba(0,0,0,.25)"></div>
+          <div style="position:absolute; left:12px; bottom:10px; background:rgba(255,255,255,.92); border-radius:999px; padding:7px 13px; font-family:ui-monospace, Menlo, monospace; font-size:10px; font-weight:600; letter-spacing:.14em; color:#23281F">3 DROP-OFFS NEARBY</div>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:16px; padding:15px 10px; border-bottom:1px solid #F0ECDE">
+          <div>
+            <div style="font-family:-apple-system, 'Helvetica Neue', sans-serif; font-size:15px; color:#23281F">Greenpoint Community Compost</div>
+            <div style="font-family:-apple-system, 'Helvetica Neue', sans-serif; font-size:12px; color:#B7B1A0; margin-top:2px">open till 7 pm</div>
+          </div>
+          <div style="font-family:ui-monospace, Menlo, monospace; font-size:12px; font-weight:600; color:#17A45B; white-space:nowrap">0.2 MI</div>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:16px; padding:15px 10px; border-bottom:1px solid #F0ECDE">
+          <div>
+            <div style="font-family:-apple-system, 'Helvetica Neue', sans-serif; font-size:15px; color:#23281F">Prospect Park — bin 14</div>
+            <div style="font-family:-apple-system, 'Helvetica Neue', sans-serif; font-size:12px; color:#B7B1A0; margin-top:2px">24 / 7</div>
+          </div>
+          <div style="font-family:ui-monospace, Menlo, monospace; font-size:12px; font-weight:600; color:#17A45B; white-space:nowrap">0.8 MI</div>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:16px; padding:15px 10px">
+          <div>
+            <div style="font-family:-apple-system, 'Helvetica Neue', sans-serif; font-size:15px; color:#23281F">Iron &amp; Oak Gym (partner)</div>
+            <div style="font-family:-apple-system, 'Helvetica Neue', sans-serif; font-size:12px; color:#B7B1A0; margin-top:2px">members + guests</div>
+          </div>
+          <div style="font-family:ui-monospace, Menlo, monospace; font-size:12px; font-weight:600; color:#17A45B; white-space:nowrap">1.1 MI</div>
+        </div>
+        <button class="btn-dark" style="margin-top:12px; width:100%; padding:15px 0; border-radius:999px; background:#23281F; color:#FBFAF4; font-family:-apple-system, 'Helvetica Neue', sans-serif; font-size:15px; border:none; cursor:pointer">Open the map</button>
+      </div>
+    </section>
+
+    <!-- zero -->
+    <section data-screen-label="Zero" style="text-align:center; padding:110px 40px 190px">
+      <div class="pt-rise" style="font-size:clamp(28px, 3.2vw, 40px); color:#6A675C">and it leaves behind…</div>
+      <div class="pt-zoom-in" style="font-family:'Young Serif', serif; font-size:clamp(120px, 17vw, 230px); line-height:.85; color:#17A45B; letter-spacing:-.02em">zero</div>
+      <div class="pt-rise" style="font-family:'Caveat', cursive; font-size:26px; color:#B7B1A0; margin-top:16px">…no microplastics. home-compostable in 12 weeks.</div>
+    </section>
+
+  </div>
+
+  <!-- ============ FOOTER: reserve ============ -->
+  <footer id="footer" data-screen-label="Footer — reserve" style="position:relative; z-index:1; margin-top:-64px; min-height:100vh; box-sizing:border-box; display:flex; flex-direction:column; padding:210px 36px 34px; background-color:color-mix(in oklab, var(--mat) 58%, #07130C); background-image: repeating-linear-gradient(0deg, rgba(255,255,255,.07) 0px, rgba(255,255,255,.07) 1px, transparent 1px, transparent 46px), repeating-linear-gradient(90deg, rgba(255,255,255,.07) 0px, rgba(255,255,255,.07) 1px, transparent 1px, transparent 46px), repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0px, rgba(255,255,255,.03) 1px, transparent 1px, transparent 11.5px), repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0px, rgba(255,255,255,.03) 1px, transparent 1px, transparent 11.5px)">
+    <div class="pt-rise" style="margin:auto; text-align:center; position:relative; width:100%; max-width:860px">
+      <div style="font-size:clamp(40px, 5vw, 66px); font-weight:400; color:#FBFAF4">Reserve your <span style="font-family:'Pinyon Script', cursive; font-size:clamp(66px, 8vw, 110px); color:#A9E3BE">Roll</span></div>
+      <div style="position:absolute; left:2%; top:58%; font-family:'Caveat', cursive; font-size:24px; color:rgba(255,255,255,.65); transform:rotate(-8deg); line-height:1.2">you sweat,<br>soil wins</div>
+      <div style="position:absolute; right:2%; top:56%; font-family:'Caveat', cursive; font-size:24px; color:rgba(255,255,255,.65); transform:rotate(6deg)">first run: 1,000 rolls</div>
+      <div style="margin:46px auto 0; width:440px; max-width:92%; background:#FBFAF4; border-radius:999px; padding:6px; display:flex; align-items:center; box-shadow:0 26px 60px rgba(0,0,0,.35)">
+        <input type="email" placeholder="Your email" style="flex:1; min-width:0; border:none; background:transparent; padding:0 20px; font-family:-apple-system, 'Helvetica Neue', sans-serif; font-size:15px; color:#23281F; outline:none" />
+        <button id="reserveBtn" class="btn-dark" style="padding:14px 26px; border-radius:999px; background:#23281F; color:#FBFAF4; font-family:-apple-system, 'Helvetica Neue', sans-serif; font-size:15px; border:none; cursor:pointer; white-space:nowrap">Reserve</button>
+      </div>
+      <div id="reserveNote" style="margin-top:20px; font-family:ui-monospace, Menlo, monospace; font-size:10px; letter-spacing:.22em; color:rgba(255,255,255,.55)">FIRST RUN SHIPS SPRING 2027 · COMPOSTABLE MAILER</div>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:16px">
+      <a href="mailto:hello@pandatapes.com" style="background:rgba(255,255,255,.12); color:rgba(255,255,255,.85); border-radius:999px; padding:10px 18px; font-family:-apple-system, 'Helvetica Neue', sans-serif; font-size:13px">hello@pandatapes.com</a>
+      <div style="display:flex; gap:10px">
+        <a href="#" class="social-chip" style="width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,.12); color:rgba(255,255,255,.85); display:flex; align-items:center; justify-content:center; font-family:ui-monospace, Menlo, monospace; font-size:11px">IG</a>
+        <a href="#" class="social-chip" style="width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,.12); color:rgba(255,255,255,.85); display:flex; align-items:center; justify-content:center; font-family:ui-monospace, Menlo, monospace; font-size:11px">X</a>
+        <a href="#" class="social-chip" style="width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,.12); color:rgba(255,255,255,.85); display:flex; align-items:center; justify-content:center; font-family:ui-monospace, Menlo, monospace; font-size:11px">TT</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ PERSISTENT DOCK ============ -->
+  <div id="dock" style="position:fixed; left:50%; bottom:22px; transform:translateX(-50%); z-index:60; display:flex; align-items:center; gap:8px">
+    <button id="dockReplay" class="dock-replay" title="Replay intro" style="width:46px; height:46px; border-radius:50%; background:#17A45B; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 26px rgba(0,0,0,.3)">
+      <div style="width:0; height:0; border-left:12px solid #FBFAF4; border-top:8px solid transparent; border-bottom:8px solid transparent; margin-left:3px"></div>
+    </button>
+    <button id="dockReserve" class="btn-dark" style="height:46px; padding:0 64px; border-radius:999px; background:#23281F; color:#FBFAF4; font-family:-apple-system, 'Helvetica Neue', sans-serif; font-size:15px; border:none; cursor:pointer; box-shadow:0 10px 26px rgba(0,0,0,.3)">Pre-order</button>
+    <button id="dockMenu" class="dock-menu" title="Menu" style="width:46px; height:46px; border-radius:50%; background:#FBFAF4; border:none; cursor:pointer; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; box-shadow:0 10px 26px rgba(0,0,0,.3)">
+      <span style="display:block; width:16px; height:2px; background:#23281F"></span>
+      <span style="display:block; width:16px; height:2px; background:#23281F"></span>
+    </button>
+  </div>
+
+</div>
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

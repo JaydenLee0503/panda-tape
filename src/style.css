@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Young+Serif&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Pinyon+Script&family=Caveat:wght@500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============ Base ============ */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #fbfaf4;
+}
+
+a {
+  color: #17a45b;
+  text-decoration: none;
+}
+a:hover {
+  color: #0f8547;
+  text-decoration: underline;
+}
+
+::selection {
+  background: #f2e14c;
+  color: #23281f;
+}
+
+input::placeholder {
+  color: #9ba394;
+}
+
+/* ============ Keyframes (from prototype) ============ */
+@keyframes pt-fall {
+  from {
+    transform: translateY(-18vh) rotate(-8deg);
+  }
+  to {
+    transform: translateY(118vh) rotate(340deg);
+  }
+}
+@keyframes pt-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes pt-rise {
+  from {
+    opacity: 0;
+    transform: translateY(46px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes pt-zoom {
+  from {
+    opacity: 0;
+    transform: scale(0.55) rotate(-4deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+@keyframes pt-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1.5deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1.5deg);
+  }
+}
+@keyframes pt-pulse {
+  0% {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25), 0 0 0 0 rgba(23, 164, 91, 0.55);
+  }
+  70% {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25), 0 0 0 16px rgba(23, 164, 91, 0);
+  }
+  100% {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25), 0 0 0 0 rgba(23, 164, 91, 0);
+  }
+}
+
+/* Scroll-entry reveals (replaces prototype `animation-timeline: view()` usage,
+   kept identical in feel; also works where view() timelines are unsupported) */
+.pt-rise {
+  animation: pt-rise 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 45%;
+}
+.pt-zoom-in {
+  animation: pt-zoom 1s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 60%;
+}
+
+/* Fallback for browsers without scroll-driven animations:
+   reveal immediately via IntersectionObserver toggling .is-visible */
+@supports not (animation-timeline: view()) {
+  .pt-rise,
+  .pt-zoom-in {
+    animation: none;
+    opacity: 0;
+  }
+  .pt-rise.is-visible {
+    animation: pt-rise 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  .pt-zoom-in.is-visible {
+    animation: pt-zoom 1s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+}
+
+/* ============ Hover interactions (replaces prototype `style-hover`) ============ */
+.support-row {
+  transition: background 0.3s;
+}
+.support-row:hover {
+  background: #f3efdf;
+}
+
+.material-card {
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s;
+}
+.material-card:hover {
+  transform: translateY(-10px) rotate(-1deg);
+  box-shadow: 0 30px 60px rgba(35, 40, 31, 0.16);
+}
+
+.btn-dark {
+  transition: background 0.3s, transform 0.3s;
+}
+.btn-dark:hover {
+  background: #3a4034;
+  transform: translateY(-2px);
+}
+
+.social-chip {
+  transition: background 0.3s;
+}
+.social-chip:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.dock-replay {
+  transition: background 0.3s;
+}
+.dock-replay:hover {
+  background: #128f4e;
+}
+.dock-menu {
+  transition: background 0.3s;
+}
+.dock-menu:hover {
+  background: #efede2;
+}
+
+/* ============ Image-slot placeholder (empty state, mirrors prototype) ============ */
+.img-slot {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+  padding: 12px;
+  box-sizing: border-box;
+  font: 13px/1.3 system-ui, -apple-system, sans-serif;
+  color: rgba(0, 0, 0, 0.55);
+}
+.img-slot .cap {
+  max-width: 90%;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+.img-slot .ring {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border: 1.5px dashed rgba(0, 0, 0, 0.25);
+  border-radius: inherit;
+}
