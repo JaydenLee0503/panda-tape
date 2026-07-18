@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Panda Tapes — Compostable Kinesio Tape</title>
+  <title>Panda Tape — Compostable Kinesio Tape</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap" rel="stylesheet" />
@@ -158,7 +158,7 @@
 
     <!-- marquee ticker -->
     <div style="position:relative; z-index:3; overflow:hidden; background:var(--accent); transform:rotate(-1.2deg) scale(1.06); margin-top:-24px; box-shadow:0 16px 40px rgba(35,40,31,.2)">
-      <div style="display:flex; width:max-content; animation:pt-marquee 30s linear infinite"><div style="display:flex; align-items:center; gap:36px; padding:15px 0 15px 36px; font-family:ui-monospace, Menlo, monospace; font-size:13px; font-weight:600; letter-spacing:.18em; color:#23281F; white-space:nowrap"><span>PANDA TAPES</span><span>✺</span><span>COMPOSTABLE KINESIO TAPE</span><span>✺</span><span>BAMBOO LYOCELL</span><span>✺</span><span>SEAWEED ADHESIVE</span><span>✺</span><span>ZERO MICROPLASTICS</span><span>✺</span><span>GONE IN 12 WEEKS</span><span>✺</span></div><div style="display:flex; align-items:center; gap:36px; padding:15px 0 15px 36px; font-family:ui-monospace, Menlo, monospace; font-size:13px; font-weight:600; letter-spacing:.18em; color:#23281F; white-space:nowrap"><span>PANDA TAPES</span><span>✺</span><span>COMPOSTABLE KINESIO TAPE</span><span>✺</span><span>BAMBOO LYOCELL</span><span>✺</span><span>SEAWEED ADHESIVE</span><span>✺</span><span>ZERO MICROPLASTICS</span><span>✺</span><span>GONE IN 12 WEEKS</span><span>✺</span></div></div>
+      <div style="display:flex; width:max-content; animation:pt-marquee 30s linear infinite"><div style="display:flex; align-items:center; gap:36px; padding:15px 0 15px 36px; font-family:ui-monospace, Menlo, monospace; font-size:13px; font-weight:600; letter-spacing:.18em; color:#23281F; white-space:nowrap"><span>PANDA TAPE</span><span>✺</span><span>COMPOSTABLE KINESIO TAPE</span><span>✺</span><span>BAMBOO LYOCELL</span><span>✺</span><span>SEAWEED ADHESIVE</span><span>✺</span><span>ZERO MICROPLASTICS</span><span>✺</span><span>GONE IN 12 WEEKS</span><span>✺</span></div><div style="display:flex; align-items:center; gap:36px; padding:15px 0 15px 36px; font-family:ui-monospace, Menlo, monospace; font-size:13px; font-weight:600; letter-spacing:.18em; color:#23281F; white-space:nowrap"><span>PANDA TAPE</span><span>✺</span><span>COMPOSTABLE KINESIO TAPE</span><span>✺</span><span>BAMBOO LYOCELL</span><span>✺</span><span>SEAWEED ADHESIVE</span><span>✺</span><span>ZERO MICROPLASTICS</span><span>✺</span><span>GONE IN 12 WEEKS</span><span>✺</span></div></div>
     </div>
 
     <!-- support list -->
@@ -292,7 +292,7 @@
       <div id="reserveNote" style="margin-top:20px; font-family:ui-monospace, Menlo, monospace; font-size:10px; letter-spacing:.22em; color:rgba(255,255,255,.55)">FIRST RUN SHIPS SPRING 2027 · COMPOSTABLE MAILER</div>
     </div>
     <div style="display:flex; justify-content:space-between; align-items:center; gap:16px">
-      <a href="mailto:hello@pandatapes.com" style="background:rgba(255,255,255,.12); color:rgba(255,255,255,.85); border-radius:999px; padding:10px 18px; font-family:-apple-system, 'Helvetica Neue', sans-serif; font-size:13px">hello@pandatapes.com</a>
+      <a href="mailto:hello@pandatape.com" style="background:rgba(255,255,255,.12); color:rgba(255,255,255,.85); border-radius:999px; padding:10px 18px; font-family:-apple-system, 'Helvetica Neue', sans-serif; font-size:13px">hello@pandatape.com</a>
       <div style="display:flex; gap:10px">
         <a href="#" class="social-chip" style="width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,.12); color:rgba(255,255,255,.85); display:flex; align-items:center; justify-content:center; font-family:ui-monospace, Menlo, monospace; font-size:11px">IG</a>
         <a href="#" class="social-chip" style="width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,.12); color:rgba(255,255,255,.85); display:flex; align-items:center; justify-content:center; font-family:ui-monospace, Menlo, monospace; font-size:11px">X</a>
@@ -314,6 +314,126 @@
   </div>
 
 </div>
+
+<!-- ============ ELEVENLABS SUPPORT AGENT (bottom-right) ============ -->
+<!--
+  Panda Tape support agent ("Bao"), skinned with the Panda Tape logo.
+
+  The real ElevenLabs widget still powers the conversation (voice + text), but we
+  hide its default launcher and drive it with our own circular logo button
+  (#pandaLauncher). Tapping the logo opens the normal chat/voice panel; the
+  panel's own avatar is the same logo via `avatar-image-url`.
+
+  SETUP: the Agent ID is injected from the VITE_ELEVENLABS_AGENT_ID env var
+  (see .env / .env.example) — Vite replaces the placeholder token below at
+  build/serve time. The agent-id is a PUBLIC identifier, but we keep it in env so
+  it's configurable per environment and out of source. NEVER put your ElevenLabs
+  API key in client HTML — the public widget does not use one; a secret key would
+  belong only in server-side env. Grounding facts and persona live in
+  elevenlabs/knowledge-base.md (upload to the agent).
+-->
+
+<!-- Force the widget's shadow DOM open so we can drive/hide its launcher.
+     Must run BEFORE the embed script upgrades the element. -->
+<script>
+  (function () {
+    var attach = Element.prototype.attachShadow;
+    Element.prototype.attachShadow = function (init) {
+      if (init && init.mode === 'closed') init = Object.assign({}, init, { mode: 'open' });
+      return attach.call(this, init);
+    };
+  })();
+</script>
+
+<elevenlabs-convai
+  id="pandaConvai"
+  agent-id="%VITE_ELEVENLABS_AGENT_ID%"
+  avatar-image-url="/uploads/panda-tape-agent-logo-square.png"
+  data-panda-state="collapsed"></elevenlabs-convai>
+
+<!-- Our logo button stands in for the widget's launcher while collapsed. -->
+<button id="pandaLauncher" type="button" aria-label="Chat with the Panda Tape assistant">
+  <img src="/uploads/panda-tape-agent-logo-square.png" alt="" />
+</button>
+
+<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+
+<script>
+  // Bridge our logo launcher <-> the real ElevenLabs widget.
+  (function () {
+    var host = document.getElementById('pandaConvai');
+    var launcher = document.getElementById('pandaLauncher');
+    if (!host || !launcher) return;
+
+    // The open panel renders a text <textarea> (and a "Collapse" button); the
+    // collapsed launcher never does. That's the reliable open/closed signal
+    // (the widget keeps a full-viewport wrapper in its shadow tree at all times,
+    // so size can't be used).
+    function isExpanded() {
+      var root = host.shadowRoot;
+      if (!root) return false;
+      return !!(root.querySelector('textarea') ||
+                root.querySelector('[aria-label="Collapse"]'));
+    }
+
+    // The widget's launcher control. "Message" opens the chat panel (which also
+    // has a call button for voice); fall back to "Start a call", then any button.
+    function launcherButton() {
+      var root = host.shadowRoot;
+      if (!root) return null;
+      return root.querySelector('[aria-label="Message"]') ||
+             root.querySelector('[aria-label="Start a call"]') ||
+             root.querySelector('button, [role="button"]');
+    }
+
+    // Permanently hide the widget's own collapsed launcher pill (the dock that
+    // holds the "Message" button) so it can never flash while the panel closes.
+    // Scoped by aria-label so the expanded panel + its Collapse button are left
+    // alone. Our #pandaLauncher logo is the only collapsed UI.
+    function injectCss(root) {
+      if (!root || root.getElementById('panda-widget-css')) return;
+      var s = document.createElement('style');
+      s.id = 'panda-widget-css';
+      s.textContent =
+        '.overlay > div:has([aria-label="Message"]){opacity:0 !important;pointer-events:none !important;}';
+      root.appendChild(s);
+    }
+
+    var trigger = null;
+    function sync() {
+      injectCss(host.shadowRoot);
+      var expanded = isExpanded();
+      host.setAttribute('data-panda-state', expanded ? 'expanded' : 'collapsed');
+      launcher.hidden = expanded;
+      if (!expanded) {
+        var b = launcherButton();
+        if (b) trigger = b; // keep a fresh handle for the next open
+      }
+    }
+
+    launcher.addEventListener('click', function () {
+      var b = trigger || launcherButton();
+      if (b) b.click(); // opens the real chat/voice panel
+      host.setAttribute('data-panda-state', 'expanded'); // optimistic; sync corrects
+      launcher.hidden = true;
+    });
+
+    // React to the widget's shadow tree changes; poll as a safety net for
+    // size-only transitions that don't mutate the DOM.
+    var tries = 0;
+    (function ready() {
+      if (host.shadowRoot) {
+        new MutationObserver(sync).observe(host.shadowRoot, {
+          childList: true, subtree: true, attributes: true,
+        });
+        setInterval(sync, 500);
+        sync();
+        return;
+      }
+      if (tries++ < 150) setTimeout(ready, 100); // widget script loads async
+    })();
+  })();
+</script>
 
 <script>
   (function () {

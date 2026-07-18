@@ -1,7 +1,7 @@
 import './style.css'
 
 /*
- * Panda Tapes — pinned-scroll hero engine.
+ * Panda Tape — pinned-scroll hero engine.
  * Ported 1:1 from the prototype's `renderVals`: every phase is a pure
  * function of the normalized scroll progress `p` (0 -> 1). No time-based
  * tweens — the frame is recomputed each scroll tick.

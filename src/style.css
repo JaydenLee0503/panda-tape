@@ -192,3 +192,49 @@ input::placeholder {
   border: 1.5px dashed rgba(0, 0, 0, 0.25);
   border-radius: inherit;
 }
+
+/* ============ ElevenLabs support agent — Panda logo launcher ============ */
+/* While collapsed, hide the widget's default launcher (opacity/pointer-events
+   cascade into its shadow tree) so only our logo button shows. When the panel
+   is open we reveal the real widget. */
+#pandaConvai[data-panda-state='collapsed'] {
+  opacity: 0;
+  pointer-events: none;
+}
+#pandaConvai[data-panda-state='expanded'] {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#pandaLauncher {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 66px;
+  height: 66px;
+  padding: 0;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  background: #fbfaf4;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+  z-index: 2147483000; /* above the widget's own launcher */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+#pandaLauncher:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.36);
+}
+#pandaLauncher:active {
+  transform: scale(0.98);
+}
+#pandaLauncher img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+#pandaLauncher[hidden] {
+  display: none;
+}
