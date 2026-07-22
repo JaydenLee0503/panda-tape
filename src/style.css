@@ -238,3 +238,419 @@ input::placeholder {
 #pandaLauncher[hidden] {
   display: none;
 }
+
+/* Hide the chat launcher while the plan overlay is open (it sits above everything). */
+body.plan-open #pandaLauncher {
+  display: none;
+}
+
+/* ============ Dock: "See the plan" button ============ */
+.btn-plan {
+  transition: background 0.3s, transform 0.3s;
+}
+.btn-plan:hover {
+  background: #128f4e;
+  transform: translateY(-2px);
+}
+
+/* ============ "See the plan" overlay ============ */
+.plan-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483200; /* above dock + chat launcher */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 0;
+  background: rgba(11, 22, 15, 0);
+  visibility: hidden;
+  transition: background 0.4s ease, visibility 0s linear 0.45s;
+}
+.plan-overlay.is-open {
+  visibility: visible;
+  background: rgba(11, 22, 15, 0.5);
+  transition: background 0.4s ease;
+}
+.plan-sheet {
+  width: 100%;
+  max-width: 1180px;
+  height: 94vh;
+  background: #fbfaf4;
+  border-radius: 30px 30px 0 0;
+  box-shadow: 0 -30px 80px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateY(100%);
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.plan-overlay.is-open .plan-sheet {
+  transform: translateY(0);
+}
+
+.plan-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 26px 30px 18px;
+  flex: none;
+}
+.plan-eyebrow {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: #17a45b;
+  margin-bottom: 8px;
+}
+.plan-h {
+  font-family: 'Young Serif', serif;
+  font-size: clamp(24px, 3.4vw, 38px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #23281f;
+}
+.plan-close {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: #efeadb;
+  color: #23281f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, transform 0.3s;
+}
+.plan-close:hover {
+  background: #e2dcc9;
+  transform: rotate(90deg);
+}
+
+/* tabs */
+.plan-tabs {
+  position: relative;
+  display: flex;
+  gap: 6px;
+  padding: 0 30px;
+  border-bottom: 1px solid #ece7d8;
+  flex: none;
+}
+.plan-tab {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 12px 6px 16px;
+  margin-right: 22px;
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 15px;
+  color: #9b9788;
+  transition: color 0.25s;
+}
+.plan-tab:hover {
+  color: #23281f;
+}
+.plan-tab.is-active {
+  color: #23281f;
+  font-weight: 600;
+}
+.plan-tab-ink {
+  position: absolute;
+  bottom: -1px;
+  height: 2.5px;
+  border-radius: 3px;
+  background: #17a45b;
+  transition: left 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+    width 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* panels */
+.plan-panel {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: none;
+  flex-direction: column;
+}
+.plan-panel.is-active {
+  display: flex;
+}
+
+/* ---- map panel ---- */
+.map-wrap {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+}
+.map-canvas {
+  position: relative;
+  height: 100%;
+  background: #e7f0e2;
+}
+.map-canvas .leaflet-container {
+  height: 100%;
+  width: 100%;
+  background: #e7f0e2;
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+}
+.map-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  color: #6a675c;
+  z-index: 1;
+  pointer-events: none;
+}
+.map-side {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  border-left: 1px solid #ece7d8;
+}
+.map-side-top {
+  padding: 16px 22px;
+  border-bottom: 1px solid #f0ecde;
+  flex: none;
+}
+.btn-locate {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 12px 0;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: #23281f;
+  color: #fbfaf4;
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  transition: background 0.3s, transform 0.3s;
+}
+.btn-locate:hover {
+  background: #3a4034;
+  transform: translateY(-2px);
+}
+.btn-locate:disabled {
+  opacity: 0.6;
+  cursor: default;
+  transform: none;
+}
+.map-status {
+  margin-top: 12px;
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #8d897b;
+}
+.map-list {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 6px 0 10px;
+}
+.map-empty {
+  padding: 22px;
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #b7b1a0;
+}
+.map-item {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #f0ecde;
+  padding: 15px 22px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.map-item:hover,
+.map-item.is-active {
+  background: #f3efdf;
+}
+.map-item-body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.map-item-name {
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 15px;
+  color: #23281f;
+}
+.map-item-meta {
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 12px;
+  color: #b7b1a0;
+  margin-top: 3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.map-item-dist {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 12px;
+  font-weight: 600;
+  color: #17a45b;
+  white-space: nowrap;
+  flex: none;
+}
+.map-note {
+  flex: none;
+  padding: 13px 30px;
+  border-top: 1px solid #ece7d8;
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #8d897b;
+}
+
+/* Panda map pin */
+.panda-pin {
+  width: 20px;
+  height: 20px;
+  border-radius: 50% 50% 50% 0;
+  background: #17a45b;
+  border: 2.5px solid #fbfaf4;
+  transform: rotate(-45deg);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+.panda-pin.is-you {
+  background: #23281f;
+  border-radius: 50%;
+  transform: none;
+}
+
+/* ---- roadmap panel ---- */
+.plan-panel[data-panel='road'] {
+  overflow-y: auto;
+}
+.road {
+  list-style: none;
+  margin: 0 auto;
+  padding: 40px 30px 60px;
+  max-width: 720px;
+  position: relative;
+}
+.road::before {
+  content: '';
+  position: absolute;
+  left: calc(30px + 9px);
+  top: 52px;
+  bottom: 60px;
+  width: 2px;
+  background: #e4dfcf;
+}
+.road-step {
+  position: relative;
+  padding-left: 40px;
+  padding-bottom: 30px;
+}
+.road-step::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fbfaf4;
+  border: 2.5px solid #c9c4b2;
+  z-index: 1;
+}
+.road-step.is-done::before {
+  background: #17a45b;
+  border-color: #17a45b;
+}
+.road-step.is-now::before {
+  background: #f2e14c;
+  border-color: #23281f;
+  box-shadow: 0 0 0 5px rgba(242, 225, 76, 0.35);
+}
+.road-step.is-goal::before {
+  background: #23281f;
+  border-color: #23281f;
+}
+.road-when {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #8d897b;
+  margin-bottom: 8px;
+}
+.road-step.is-now .road-when {
+  color: #17a45b;
+}
+.road-card {
+  background: #ffffff;
+  border: 1px solid #ece7d8;
+  border-radius: 18px;
+  padding: 18px 20px;
+}
+.road-step.is-now .road-card {
+  border-color: #d8d08f;
+  box-shadow: 0 16px 34px rgba(35, 40, 31, 0.08);
+}
+.road-title {
+  font-family: 'Young Serif', serif;
+  font-size: 21px;
+  color: #23281f;
+  margin-bottom: 7px;
+}
+.road-body {
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: #6a675c;
+  margin: 0;
+}
+.road-cta {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: #23281f;
+  color: #fbfaf4;
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 13.5px;
+  transition: background 0.3s, transform 0.3s;
+}
+.road-cta:hover {
+  background: #3a4034;
+  transform: translateY(-2px);
+}
+
+/* ---- responsive ---- */
+@media (max-width: 760px) {
+  .plan-sheet {
+    height: 96vh;
+  }
+  .plan-head {
+    padding: 20px 20px 14px;
+  }
+  .plan-tabs {
+    padding: 0 20px;
+  }
+  .map-wrap {
+    grid-template-columns: 1fr;
+    grid-template-rows: 45% 55%;
+  }
+  .map-side {
+    border-left: none;
+    border-top: 1px solid #ece7d8;
+  }
+}

@@ -9,6 +9,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap" rel="stylesheet" />
   <style>
     html, body { margin: 0; padding: 0; background: #dcecc9; }
+    /* The overlay's real styles live in style.css, which Vite injects via JS.
+       Until that loads, hide the "See the plan" sheet so it can't flash on
+       reload. Scoped with :not(.is-open) so it never fights the open state. */
+    #planOverlay:not(.is-open) { position: fixed; inset: 0; visibility: hidden; }
     #curtain {
       position: fixed; inset: 0; z-index: 9999;
       background: #dcecc9;
@@ -306,11 +310,107 @@
     <button id="dockReplay" class="dock-replay" title="Replay intro" style="width:46px; height:46px; border-radius:50%; background:#17A45B; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 26px rgba(0,0,0,.3)">
       <div style="width:0; height:0; border-left:12px solid #FBFAF4; border-top:8px solid transparent; border-bottom:8px solid transparent; margin-left:3px"></div>
     </button>
-    <button id="dockReserve" class="btn-dark" style="height:46px; padding:0 64px; border-radius:999px; background:#23281F; color:#FBFAF4; font-family:-apple-system, 'Helvetica Neue', sans-serif; font-size:15px; border:none; cursor:pointer; box-shadow:0 10px 26px rgba(0,0,0,.3)">Pre-order</button>
+    <button id="dockPlan" class="btn-plan" style="height:46px; padding:0 26px; border-radius:999px; background:#17A45B; color:#FBFAF4; font-family:-apple-system, 'Helvetica Neue', sans-serif; font-size:15px; border:none; cursor:pointer; box-shadow:0 10px 26px rgba(0,0,0,.3); display:flex; align-items:center; gap:9px">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex:none"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z" stroke="#FBFAF4" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" fill="#FBFAF4"/></svg>
+      See the plan
+    </button>
+    <button id="dockReserve" class="btn-dark" style="height:46px; padding:0 40px; border-radius:999px; background:#23281F; color:#FBFAF4; font-family:-apple-system, 'Helvetica Neue', sans-serif; font-size:15px; border:none; cursor:pointer; box-shadow:0 10px 26px rgba(0,0,0,.3)">Pre-order</button>
     <button id="dockMenu" class="dock-menu" title="Menu" style="width:46px; height:46px; border-radius:50%; background:#FBFAF4; border:none; cursor:pointer; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; box-shadow:0 10px 26px rgba(0,0,0,.3)">
       <span style="display:block; width:16px; height:2px; background:#23281F"></span>
       <span style="display:block; width:16px; height:2px; background:#23281F"></span>
     </button>
+  </div>
+
+  <!-- ============ "SEE THE PLAN" OVERLAY ============ -->
+  <div id="planOverlay" class="plan-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="The Panda Tape plan">
+    <div class="plan-sheet" role="document">
+
+      <header class="plan-head">
+        <div>
+          <div class="plan-eyebrow">THE PLAN</div>
+          <div class="plan-h">Where it goes.<br>Where we're going.</div>
+        </div>
+        <button id="planClose" class="plan-close" type="button" aria-label="Close the plan">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+        </button>
+      </header>
+
+      <div class="plan-tabs" role="tablist" aria-label="Plan sections">
+        <button class="plan-tab is-active" data-tab="map" role="tab" aria-selected="true" type="button">Drop-off map</button>
+        <button class="plan-tab" data-tab="road" role="tab" aria-selected="false" type="button">Roadmap</button>
+        <span class="plan-tab-ink" aria-hidden="true"></span>
+      </div>
+
+      <!-- MAP -->
+      <section class="plan-panel is-active" data-panel="map" role="tabpanel">
+        <div class="map-wrap">
+          <div id="planMap" class="map-canvas">
+            <div id="planMapLoading" class="map-loading">Loading the map…</div>
+          </div>
+          <aside class="map-side">
+            <div class="map-side-top">
+              <button id="planLocate" class="btn-locate" type="button">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                Use my location
+              </button>
+              <div id="planMapStatus" class="map-status">Panda points near Brooklyn, NY…</div>
+            </div>
+            <div id="planList" class="map-list"><!-- filled by JS --></div>
+          </aside>
+        </div>
+        <div class="map-note">Panda points are compost bins &amp; partner gyms where a used strip returns to soil — peel it, ball it, drop it. Nearby places are pulled live from Foursquare.</div>
+      </section>
+
+      <!-- ROADMAP -->
+      <section class="plan-panel" data-panel="road" role="tabpanel" hidden>
+        <ol class="road">
+          <li class="road-step is-done">
+            <div class="road-when">2025</div>
+            <div class="road-card">
+              <div class="road-title">The formula</div>
+              <p class="road-body">Bamboo-lyocell backing + seaweed adhesive, dialed in to hold five sweaty days and certified home-compostable in 12 weeks.</p>
+            </div>
+          </li>
+          <li class="road-step is-now">
+            <div class="road-when">You are here · 2026</div>
+            <div class="road-card">
+              <div class="road-title">Reserve the first run</div>
+              <p class="road-body">Pre-orders open for the first 1,000 rolls. Every reservation tells us which cities to seed drop-off points in first.</p>
+              <button class="road-cta" data-go="reserve" type="button">Reserve a roll →</button>
+            </div>
+          </li>
+          <li class="road-step">
+            <div class="road-when">Spring 2027</div>
+            <div class="road-card">
+              <div class="road-title">First run ships</div>
+              <p class="road-body">1,000 rolls go out in a fully compostable mailer. Stick, sweat, compost — the loop closes for the first time.</p>
+            </div>
+          </li>
+          <li class="road-step">
+            <div class="road-when">2027</div>
+            <div class="road-card">
+              <div class="road-title">The Panda app</div>
+              <p class="road-body">Maps every compost bin &amp; partner gym near you and logs each strip you return to soil. Launching with 312 drop-off points and counting.</p>
+            </div>
+          </li>
+          <li class="road-step">
+            <div class="road-when">2028</div>
+            <div class="road-card">
+              <div class="road-title">The drop-off network</div>
+              <p class="road-body">Partner gyms and community compost in every major city, plus shelf space in refill and outdoor stores.</p>
+            </div>
+          </li>
+          <li class="road-step is-goal">
+            <div class="road-when">The goal</div>
+            <div class="road-card">
+              <div class="road-title">Zero to landfill</div>
+              <p class="road-body">Every strip we ever make returns to soil. None of it outlives you.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+    </div>
   </div>
 
 </div>

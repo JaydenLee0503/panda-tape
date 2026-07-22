@@ -1,4 +1,6 @@
 import './style.css'
+import { initPlan } from './plan.js'
+import { supabase } from './supabase.js'
 
 /*
  * Panda Tape — pinned-scroll hero engine.
@@ -249,13 +251,50 @@ function startIntro(delay) {
   ]
 }
 
-// ---------- footer reserve toggle ----------
-function reserve() {
-  state.reserved = true
+// ---------- footer reserve form ----------
+const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/
+
+/**
+ * Persist an email to the Supabase `reservations` table.
+ * Returns true on success (a duplicate email counts as success — they're
+ * already on the list). If Supabase isn't configured, we no-op to true so the
+ * form still "works" in a bare local checkout.
+ */
+async function saveReservation(email, source) {
+  if (!supabase) return true
+  const { error } = await supabase.from('reservations').insert({ email, source })
+  if (error && error.code !== '23505') {
+    // 23505 = unique violation (already reserved) — that's fine.
+    console.warn('[panda] reservation failed:', error.message)
+    return false
+  }
+  return true
+}
+
+async function reserve() {
   const btn = $('reserveBtn')
   const note = $('reserveNote')
-  if (btn) btn.textContent = "You're in"
-  if (note) note.textContent = "YOU'RE ON THE LIST. WE'LL WRITE SOON."
+  const input = document.querySelector('#footer input[type="email"]')
+  const email = (input?.value || '').trim()
+
+  if (!EMAIL_RE.test(email)) {
+    if (note) note.textContent = 'PLEASE ENTER A VALID EMAIL ADDRESS.'
+    input?.focus()
+    return
+  }
+
+  if (btn) { btn.disabled = true; btn.textContent = 'Saving…' }
+  const ok = await saveReservation(email, 'footer')
+
+  if (ok) {
+    state.reserved = true
+    if (btn) btn.textContent = "You're in"
+    if (note) note.textContent = "YOU'RE ON THE LIST. WE'LL WRITE SOON."
+    if (input) input.disabled = true
+  } else {
+    if (btn) { btn.disabled = false; btn.textContent = 'Reserve' }
+    if (note) note.textContent = 'SOMETHING WENT WRONG — PLEASE TRY AGAIN.'
+  }
 }
 
 function goReserve() {
@@ -272,9 +311,16 @@ function replay() {
 
 // ---------- wire up ----------
 $('reserveBtn')?.addEventListener('click', reserve)
+document.querySelector('#footer input[type="email"]')?.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') { e.preventDefault(); reserve() }
+})
 $('dockReserve')?.addEventListener('click', goReserve)
 $('dockMenu')?.addEventListener('click', goReserve)
 $('dockReplay')?.addEventListener('click', replay)
+
+// "See the plan" overlay (map + roadmap)
+const plan = initPlan({ onReserve: goReserve })
+$('dockPlan')?.addEventListener('click', () => plan?.open())
 
 window.addEventListener('scroll', onScroll, { passive: true })
 window.addEventListener('resize', onScroll)

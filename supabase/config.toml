@@ -1,0 +1,12 @@
+# Panda Tape — Supabase project config.
+# Minimal by design: the CLI fills in defaults for anything omitted. If you'd
+# rather have the full generated file, run `npx supabase init` in a scratch dir
+# and copy it over — but this is enough to `db push` and `functions deploy`.
+
+project_id = "panda-tape"
+
+[functions.places]
+# Keep JWT verification on. The browser calls this through
+# supabase.functions.invoke(), which attaches the public anon key automatically,
+# so this stays reachable from the site while blocking unauthenticated randoms.
+verify_jwt = true
