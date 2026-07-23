@@ -654,3 +654,145 @@ body.plan-open #pandaLauncher {
     border-top: 1px solid #ece7d8;
   }
 }
+
+/* ============================================================
+   MOBILE LAYOUT
+   The page is built with inline styles tuned for wide screens,
+   so these overrides use !important to win against them. The
+   pinned-scroll hero is sized in vw/vh and scales on its own;
+   here we mostly fix the flowing content sections, the dock,
+   and the floating launcher.
+   ============================================================ */
+@media (max-width: 760px) {
+  /* --- flowing sections: tighter gutters --- */
+  section[data-screen-label] {
+    padding-left: 22px !important;
+    padding-right: 22px !important;
+  }
+
+  /* Support list: stack the label above its description */
+  section[data-screen-label='Support list'] {
+    padding-top: 90px !important;
+    padding-bottom: 70px !important;
+  }
+  .support-row {
+    grid-template-columns: 1fr !important;
+    gap: 4px 0 !important;
+    padding: 18px 6px !important;
+  }
+
+  /* Materials: single column of cards */
+  .materials-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    margin-top: 44px !important;
+  }
+  section[data-screen-label='Materials'] {
+    padding-top: 40px !important;
+    padding-bottom: 90px !important;
+  }
+
+  /* Drop-off: stack copy above the app card, and center the card */
+  section[data-screen-label='Drop-off app'] {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+    padding-top: 30px !important;
+    padding-bottom: 90px !important;
+  }
+  section[data-screen-label='Drop-off app'] > .pt-rise {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Zero section: trim the tall vertical padding */
+  section[data-screen-label='Zero'] {
+    padding-top: 70px !important;
+    padding-bottom: 120px !important;
+  }
+
+  /* --- hero: give the stat sentence room to breathe --- */
+  .hero-stat-copy {
+    width: 82vw !important;
+    font-size: 8vw !important;
+  }
+
+  /* Hero phase annotations (bottom-right caveat + mono pill clusters).
+     They're tuned for a wide canvas; on a phone the 28px caveats crowd and
+     the pills can wrap. Lift them clear of the bottom dock and scale down. */
+  .hero-note {
+    bottom: 150px !important; /* clears the chat launcher (tops out ~132px) */
+    gap: 9px !important;
+    max-width: 78vw !important;
+  }
+  .hero-note [style*='Caveat'] {
+    font-size: 19px !important;
+  }
+  .hero-note-pill {
+    font-size: 9px !important;
+    letter-spacing: 0.12em !important;
+    padding: 8px 13px !important;
+  }
+  /* Recycle overlay's left-side "RECYCLABLE ≠ RECYCLED" pill */
+  #rw3 > div {
+    font-size: 9px !important;
+    letter-spacing: 0.1em !important;
+    padding: 8px 12px !important;
+  }
+
+  /* --- footer --- */
+  #footer {
+    padding-top: 150px !important;
+    padding-bottom: 120px !important;
+  }
+  /* The hand-written side notes overlap the heading on narrow screens */
+  .footer-scrawl {
+    display: none !important;
+  }
+
+  /* --- persistent dock: keep it inside the viewport --- */
+  #dock {
+    left: 12px !important;
+    right: 12px !important;
+    transform: none !important;
+    justify-content: center !important;
+    gap: 7px !important;
+    bottom: 16px !important;
+  }
+  /* The hamburger just scrolls to the pre-order form (same as Pre-order),
+     so drop it on mobile to reclaim space. */
+  #dockMenu {
+    display: none !important;
+  }
+  #dockPlan {
+    padding: 0 16px !important;
+    font-size: 14px !important;
+  }
+  #dockReserve {
+    padding: 0 20px !important;
+    font-size: 14px !important;
+  }
+
+  /* --- chat launcher: sit above the dock so they don't collide --- */
+  #pandaLauncher {
+    width: 56px;
+    height: 56px;
+    right: 14px;
+    bottom: 76px;
+  }
+}
+
+/* Very small phones: trim the dock further */
+@media (max-width: 400px) {
+  #dockPlan {
+    padding: 0 12px !important;
+    font-size: 13px !important;
+  }
+  #dockReserve {
+    padding: 0 15px !important;
+    font-size: 13px !important;
+  }
+  #dockReplay {
+    width: 42px !important;
+    height: 42px !important;
+  }
+}

@@ -62,13 +62,13 @@
         <div id="stats">
           <div style="position:absolute; inset:0; background-image:url('/uploads/mat-desk.png'); background-size:cover; background-position:center"></div>
           <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(20,25,18,.32), rgba(20,25,18,.12) 45%, rgba(20,25,18,.36))"></div>
-          <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:38vw; display:flex; flex-direction:column; align-items:center; text-align:center; font-family:'Young Serif', serif; font-size:4.4vw; line-height:1.02; letter-spacing:-.02em; color:#FBFAF4; text-shadow:0 6px 26px rgba(0,0,0,.55)">
+          <div class="hero-stat-copy" style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:38vw; display:flex; flex-direction:column; align-items:center; text-align:center; font-family:'Young Serif', serif; font-size:4.4vw; line-height:1.02; letter-spacing:-.02em; color:#FBFAF4; text-shadow:0 6px 26px rgba(0,0,0,.55)">
             <div id="sw1"><span style="color:var(--accent)">5,000 tonnes</span></div>
             <div id="sw2">of kinesio tape</div>
             <div id="sw3">landfilled yearly.</div>
           </div>
-          <div style="position:absolute; right:5vw; bottom:9vh; text-align:right; display:flex; flex-direction:column; align-items:flex-end; gap:14px">
-            <div style="background:rgba(35,40,31,.85); border-radius:999px; padding:11px 18px; font-family:ui-monospace, Menlo, monospace; font-size:11px; font-weight:600; letter-spacing:.16em; color:#FBFAF4">EVERY ROLL EVER MADE STILL EXISTS</div>
+          <div class="hero-note" style="position:absolute; right:5vw; bottom:9vh; text-align:right; display:flex; flex-direction:column; align-items:flex-end; gap:14px">
+            <div class="hero-note-pill" style="background:rgba(35,40,31,.85); border-radius:999px; padding:11px 18px; font-family:ui-monospace, Menlo, monospace; font-size:11px; font-weight:600; letter-spacing:.16em; color:#FBFAF4">EVERY ROLL EVER MADE STILL EXISTS</div>
             <div style="font-family:'Caveat', cursive; font-size:28px; font-weight:600; color:rgba(251,250,244,.9); transform:rotate(-3deg)">and it's mostly plastic ↓</div>
           </div>
           <div id="turnShade"></div>
@@ -83,7 +83,7 @@
             <div id="rw2"><div style="font-size:13vw; line-height:.84; color:var(--accent)">&ldquo;recycling&rdquo;</div></div>
             <div id="rw3"><div style="margin-top:30px; background:rgba(35,40,31,.85); border-radius:999px; padding:11px 18px; font-family:ui-monospace, Menlo, monospace; font-size:12px; font-weight:600; letter-spacing:.16em; color:#FBFAF4; display:inline-block">&lsquo;RECYCLABLE&rsquo; &ne; RECYCLED &middot; UNDER 9% ACTUALLY IS</div></div>
           </div>
-          <div style="position:absolute; right:5vw; bottom:9vh; text-align:right">
+          <div class="hero-note" style="position:absolute; right:5vw; bottom:9vh; text-align:right">
             <div style="font-family:'Caveat', cursive; font-size:28px; font-weight:600; color:rgba(251,250,244,.9); transform:rotate(-3deg)">so where does it really go? ↓</div>
           </div>
         </div>
@@ -97,8 +97,8 @@
             <div style="color:var(--accent)"><div id="pw2">you peel</div></div>
             <div style="color:#FBFAF4"><div id="pw3">outlives you.</div></div>
           </div>
-          <div style="position:absolute; right:5vw; bottom:9vh; text-align:right; display:flex; flex-direction:column; align-items:flex-end; gap:14px">
-            <div style="background:rgba(35,40,31,.85); border-radius:999px; padding:11px 18px; font-family:ui-monospace, Menlo, monospace; font-size:11px; font-weight:600; letter-spacing:.16em; color:#FBFAF4">PLASTIC FILM + ACRYLIC GLUE · ~100 YRS IN LANDFILL</div>
+          <div class="hero-note" style="position:absolute; right:5vw; bottom:9vh; text-align:right; display:flex; flex-direction:column; align-items:flex-end; gap:14px">
+            <div class="hero-note-pill" style="background:rgba(35,40,31,.85); border-radius:999px; padding:11px 18px; font-family:ui-monospace, Menlo, monospace; font-size:11px; font-weight:600; letter-spacing:.16em; color:#FBFAF4">PLASTIC FILM + ACRYLIC GLUE · ~100 YRS IN LANDFILL</div>
             <div style="font-family:'Caveat', cursive; font-size:28px; font-weight:600; color:rgba(251,250,244,.9); transform:rotate(-3deg)">keep scrolling — we fixed it ↓</div>
           </div>
         </div>
@@ -205,7 +205,7 @@
         <div style="font-family:'Pinyon Script', cursive; font-size:clamp(66px, 8vw, 104px); line-height:.95; color:#17A45B">Seaweed</div>
         <div style="position:absolute; right:10px; top:20%; font-family:'Caveat', cursive; font-size:23px; color:#C9C4B2; text-decoration:line-through; transform:rotate(6deg)">not plastic.</div>
       </div>
-      <div class="pt-rise" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:26px; margin-top:66px">
+      <div class="pt-rise materials-grid" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:26px; margin-top:66px">
         <div class="material-card" style="background:#FFFFFF; border:1px solid #ECE7D8; border-radius:26px; padding:16px 16px 26px">
           <div style="height:190px">
             <div class="img-slot" style="border-radius:16px; background-image:url('/uploads/bamboo.jpeg'); background-size:cover; background-position:center"></div>
@@ -287,8 +287,8 @@
   <footer id="footer" data-screen-label="Footer — reserve" style="position:relative; z-index:1; margin-top:-64px; min-height:100vh; box-sizing:border-box; display:flex; flex-direction:column; padding:210px 36px 34px; background-color:color-mix(in oklab, var(--mat) 58%, #07130C); background-image: repeating-linear-gradient(0deg, rgba(255,255,255,.07) 0px, rgba(255,255,255,.07) 1px, transparent 1px, transparent 46px), repeating-linear-gradient(90deg, rgba(255,255,255,.07) 0px, rgba(255,255,255,.07) 1px, transparent 1px, transparent 46px), repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0px, rgba(255,255,255,.03) 1px, transparent 1px, transparent 11.5px), repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0px, rgba(255,255,255,.03) 1px, transparent 1px, transparent 11.5px)">
     <div class="pt-rise" style="margin:auto; text-align:center; position:relative; width:100%; max-width:860px">
       <div style="font-size:clamp(40px, 5vw, 66px); font-weight:400; color:#FBFAF4">Reserve your <span style="font-family:'Pinyon Script', cursive; font-size:clamp(66px, 8vw, 110px); color:#A9E3BE">Roll</span></div>
-      <div style="position:absolute; left:2%; top:58%; font-family:'Caveat', cursive; font-size:24px; color:rgba(255,255,255,.65); transform:rotate(-8deg); line-height:1.2">you sweat,<br>soil wins</div>
-      <div style="position:absolute; right:2%; top:56%; font-family:'Caveat', cursive; font-size:24px; color:rgba(255,255,255,.65); transform:rotate(6deg)">first run: 1,000 rolls</div>
+      <div class="footer-scrawl" style="position:absolute; left:2%; top:58%; font-family:'Caveat', cursive; font-size:24px; color:rgba(255,255,255,.65); transform:rotate(-8deg); line-height:1.2">you sweat,<br>soil wins</div>
+      <div class="footer-scrawl" style="position:absolute; right:2%; top:56%; font-family:'Caveat', cursive; font-size:24px; color:rgba(255,255,255,.65); transform:rotate(6deg)">first run: 1,000 rolls</div>
       <div style="margin:46px auto 0; width:440px; max-width:92%; background:#FBFAF4; border-radius:999px; padding:6px; display:flex; align-items:center; box-shadow:0 26px 60px rgba(0,0,0,.35)">
         <input type="email" placeholder="Your email" style="flex:1; min-width:0; border:none; background:transparent; padding:0 20px; font-family:-apple-system, 'Helvetica Neue', sans-serif; font-size:15px; color:#23281F; outline:none" />
         <button id="reserveBtn" class="btn-dark" style="padding:14px 26px; border-radius:999px; background:#23281F; color:#FBFAF4; font-family:-apple-system, 'Helvetica Neue', sans-serif; font-size:15px; border:none; cursor:pointer; white-space:nowrap">Reserve</button>
